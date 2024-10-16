@@ -1,23 +1,25 @@
-// utils/sendEmail.js
 const nodemailer = require('nodemailer');
 
-const sendEmail = async (options) => {
-  const transporter = nodemailer.createTransport({
-    service: 'Gmail',  // or another email service like Mailgun, SendGrid, etc.
+const transporter = nodemailer.createTransport({
+    host: "smtp.mailtrap.io",
+    port: 587,
     auth: {
-      user: "vishalsavaliya2912@gmail.com",  // Your email
-      pass: "spatel@123",  // Your email password or app-specific password
+        user: "vishalsavaliya2912@gmail.com",
+        pass: "savalya@123##",
     },
-  });
+});
 
-  const mailOptions = {
-    from: '"Task Manager" <noreply@taskmanager.com>',
-    to: options.email,
-    subject: options.subject,
-    text: options.message,
-  };
+const sendEmail = async () => {
+    const mailOptions = {
+        from: 'vishalsavaliya2912@gmail.com',
+        to: "hevin@gmail.com",
+        subject: "Hello",
+        text: "Hello from vishalsavaliya",
+    };
 
-  await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
 };
+
+
 
 module.exports = sendEmail;
